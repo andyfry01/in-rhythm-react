@@ -1,17 +1,20 @@
 // React
 import React, { Component } from "react";
 
+// CSS
+import "./css/index.css";
+import "./css/reset.css";
+
 // Components
 import AlbumTimeline from "./components/AlbumTimeline";
-import HeaderImg from "./components/HeaderImg";
+import Header from "./components/Header";
 import SearchArea from "./components/SearchArea";
 
 class Index extends Component {
   render() {
     return (
       <div>
-        <h1>Hello from index</h1>
-        <HeaderImg />
+        <Header />
         <SearchArea />
         <AlbumTimeline />
       </div>
@@ -20,4 +23,3 @@ class Index extends Component {
 }
 
 export default Index;
- 
