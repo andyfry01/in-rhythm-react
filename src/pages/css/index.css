@@ -82,6 +82,38 @@
 
   /* Search Area */
 
+  .searchArea {
+    height: 30vh;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 40% auto 40%;
+    grid-template-columns: 1fr 60% 10% 1fr;
+    grid-column-gap: 10px;
+  }
+
+  .searchArea__input {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    font-size: 1.25rem;
+    font-family: 'Muli', sans-serif;
+    padding-left: 1rem;
+  }
+
+  .searchArea__clearInput { 
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background: rgb(254, 87, 87);
+  }
+
+  .searchArea__clearInputIcon {
+    height: 2rem;
+    width: 2rem;
+  }
+  
   /* Album Timeline */
 
   /* Album */
