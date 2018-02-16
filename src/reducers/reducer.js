@@ -3,7 +3,8 @@ const initialState = {
   userSearchboxInput: '',
   dropdownMenuSelection: '',
   albumList: [],
-  querying: false
+  searching: false,
+  error: false
 }
 
 
@@ -11,28 +12,37 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_USER_INPUT':
       return Object.assign({}, state, {
-        userSearchboxInput: action.userSearchboxInput
+        userSearchboxInput: action.userSearchboxInput,
+        searching: true
       })
 
     case 'SET_DROPDOWN_SELECTION':
       return Object.assign({}, state, {
-        dropdownMenuSelection: action.dropdownMenuSelection
+        dropdownMenuSelection: action.dropdownMenuSelection,
+        searching: true
       })
 
     case 'RECEIVE_ALBUMS':
       return Object.assign({}, state, {
         albumList: action.albumList,
-        querying: false
+        searching: false,
+        error: false
       })
 
     case 'REQUEST_ALBUMS':
       return Object.assign({}, state, {
-        querying: true
+        searching: true
       })
 
     case 'REQUEST_FAILED':
       return Object.assign({}, state, {
-        requestError: action.error
+        error: true
+      })
+
+    case 'CLEAR_USER_INPUT':
+      return Object.assign({}, state, {
+        userSearchboxInput: '',
+        dropdownMenuSelection: ''
       })
 
 

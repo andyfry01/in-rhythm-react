@@ -23,6 +23,12 @@ export function fetchAlbums(searchTerm) {
   }
 }
 
+export function clearUserInput(){
+  return {
+    type: 'CLEAR_USER_INPUT'
+  }
+}
+
 
 function requestAlbums(searchTerm) {
   return {
@@ -43,6 +49,11 @@ function receiveAlbumList(albumList) {
   console.log('receiving albums');
   console.log('albumList');
   console.log(albumList);
+  if (albumList.results.length === 0) {
+    return {
+      type: 'REQUEST_FAILED'
+    }
+  }
   let albumInfo = albumList.results.map((album) => { 
     return {
       albumName: album.collectionName, 

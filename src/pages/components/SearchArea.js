@@ -3,14 +3,13 @@ import React, { Component } from "react";
 
 // Assets/utils
 import icon from "../../assets/slash.svg";
-import artistListStub from '../../stubs/artistList';
+import artistList from '../../assets/artistList';
 
 // Components
 import AutoCompleter from './AutoCompleter';
 
 // Redux
-import { updateUserSearchboxInput } from '../../actions/actionCreator';
-import { fetchAlbums } from '../../actions/actionCreator';
+import { updateUserSearchboxInput, clearUserInput, fetchAlbums } from '../../actions/actionCreator';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -19,11 +18,10 @@ class SearchArea extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      popularArtists: ['']
+      popularArtists: artistList
     }
     this.handleInput = this.handleInput.bind(this);
     this.clearSearchTerm = this.clearSearchTerm.bind(this);
-    this.displayAutoComplete = this.displayAutoComplete.bind(this);
     this.search = this.search.bind(this);
     this.handleKeys = this.handleKeys.bind(this);
   }
@@ -35,9 +33,7 @@ class SearchArea extends Component {
 
   // hook up to redux!
   clearSearchTerm() {
-    this.setState((state, props) => {
-      return { searchTerm: '' };
-    });
+    this.props.clearUserInput()
   }
 
   handleKeys(e) {
@@ -50,34 +46,6 @@ class SearchArea extends Component {
     this.props.fetchAlbums(this.props.userSearchboxInput)
   }
 
-  displayAutoComplete() {
-    if (this.props.userSearchboxInput.length < 1) {
-      return 'hidden'
-    } else {
-      return ''
-    }
-  }
-
-  componentDidMount() {
-    const { dispatch, selectedSubreddit } = this.props
-    // using stub to not overwhelm API
-    this.setState(state => {
-      return {
-        popularArtists: artistListStub
-      }
-    })
-    // uncomment for production
-    // fetcher.getAutoCompleteArtists()
-    // .then(topArtists => {
-    //   console.log(topArtists);
-    //   this.setState(state => {
-    //     return {
-    //       popularArtists: topArtists
-    //     }
-    //   })
-    // })
-  }
-  
   render() {
     return (
       <div className="searchArea">
@@ -90,8 +58,7 @@ class SearchArea extends Component {
           onChange={e => this.handleInput(e)}
           onKeyDown={this.handleKeys}
         />
-        <AutoCompleter  menuItems={this.state.popularArtists}
-                        visibilityToggler={this.displayAutoComplete()} />
+        <AutoCompleter  menuItems={this.state.popularArtists} />
         <button
           className="searchArea__clearInput"
           onClick={this.clearSearchTerm}
@@ -115,7 +82,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = function (dispatch) {
   return bindActionCreators({
     updateUserSearchboxInput: updateUserSearchboxInput,
-    fetchAlbums: fetchAlbums
+    fetchAlbums: fetchAlbums,
+    clearUserInput: clearUserInput
   }, dispatch)
 }
 

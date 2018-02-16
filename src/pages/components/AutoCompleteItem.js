@@ -13,7 +13,6 @@ const AutoCompleteItem = (props) => {
   return (
     <div  className="searchArea__autoCompleteItem" 
           tabIndex={`${props.index + 2}`}
-          key={props.index} 
           onFocus={handleItemFocus} 
           onClick={handleClick} > 
         <span>{props.artistName}</span> 

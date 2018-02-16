@@ -59,15 +59,24 @@ class AutoCompleter extends Component {
   }
 
   render() {
+    console.log('this.props~~');
+    console.log(this.props);
     const autoCompleteSuggestions = this.state.suggestions.map((artistName, index) => {
-      return (<AutoCompleteItem index={index} 
+      return (<AutoCompleteItem key={index} 
+                                index={index}
                                 artistName={artistName} 
                                 isFocussed={this.state.focussedArtist}
                                 updateSelectedArtist={this.updateSelectedArtist} 
                                 handleSearch={this.search} />)
     })
+    let visibilityToggler = undefined
+    if (this.props.searching) {
+      visibilityToggler = ''
+    } else {
+      visibilityToggler = 'hidden'
+    }
     return (
-      <div  className={`searchArea__autoCompleteMenu ${this.props.visibilityToggler}`}
+      <div  className={`searchArea__autoCompleteMenu ${visibilityToggler}`}
             onKeyDown={this.handleKeys} >
         {autoCompleteSuggestions}
       </div>)
