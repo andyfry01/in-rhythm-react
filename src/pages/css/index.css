@@ -228,6 +228,9 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  .header__image img {
+    margin-top: -5rem;
+  }
   .album {
     grid-template-columns: 10% 7px 20% 40%;
   }
@@ -235,7 +238,9 @@
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-
+  .header__image img {
+    margin-top: -10rem;
+  }
   .album {
     grid-template-columns: 10% 7px 20% 30%;
   }
@@ -243,4 +248,7 @@
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+  .header__image img {
+    margin-top: -12rem;
+  }
 }
