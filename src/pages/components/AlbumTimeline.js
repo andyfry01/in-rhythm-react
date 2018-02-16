@@ -12,9 +12,11 @@ import { connect } from 'react-redux';
 const AlbumTimeline = (props) => {
 
   if (props.albumList.length > 0) {
-    let albums = props.albumList.map(albumInfo => <Album artistInfo={albumInfo} />)
+    let albums = props.albumList.map((albumInfo, index) => { 
+      return <Album artistInfo={albumInfo} key={index} /> 
+    })
     return (
-      <div>
+      <div class="albumTimeline">
         {albums}
       </div>
     )

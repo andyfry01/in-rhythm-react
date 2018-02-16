@@ -1,6 +1,10 @@
 /* Vars */
 :root {
   --menuBorderColor: rgb(238, 238, 238);
+  --albumHeightSmall: 25rem;
+  --albumHeightMed: 30rem;
+  --albumHeightLarge: 40rem;
+  --boxShadow: 3px 5px 10px black;
 }
 
 /* Util classes */
@@ -76,7 +80,7 @@
     background: rgba(0,0,0, 0.7);
     color: white;
     padding: 1rem;
-    box-shadow: 3px 5px 10px black;
+    box-shadow: var(--boxShadow);
   }
 
   .header__headerText {
@@ -137,15 +141,104 @@
 
   /* Album Timeline */
 
+  .albumTimeline {
+    font-family: 'Muli', sans-serif;
+  }
+
   /* Album */
+
+  .album {
+    display: grid;
+    grid-template-columns: 10% 7px 20% 50%;
+    grid-template-rows: 20% 20% 3px auto;
+    grid-template-areas:"leftGutter verticalBar topGutter     topGutter"
+                        "leftGutter verticalBar albumYear     albumMain"
+                        "leftGutter verticalBar horizontalBar albumMain"
+                        "leftGutter verticalBar bottomGutter  albumMain";
+    height: auto;
+    grid-row-gap: 10rem;
+    width: 100%;
+  }
+
+  .alubmTimeline__timelineBar {
+    grid-area: verticalBar;
+    background: black;
+  }
+
+  .album__horizontalBar {
+    grid-area: horizontalBar;
+    background: black;
+    color: white;
+    height: 100%;
+    width: 100%;
+  }
+
+  .album__year {
+    grid-area: albumYear;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .album__main {
+    grid-area: albumMain;
+    display: grid;
+    z-index: 10;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 1fr;
+    grid-template-areas:  "albumTitle"
+                          "albumImg";
+    grid-row-gap: 20px;
+    animation: 0.9s ease fade-in;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 20px;
+    box-shadow: var(--boxShadow);
+  }
+
+  .album__title {
+    grid-area: albumTitle;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .album__image {
+    grid-area: albumImg;
+  }
+
+  .album__image img {
+    max-width: 100%;
+    /*min-height: 100%;*/
+    max-height: var(--albumHeightSmall);
+    display: block;
+    margin: 0 auto;
+    /*height: var(--albumHeight);*/
+    border: 1px solid black;
+    border-radius: 2px;
+  }
+
+  @keyframes fade-in {
+      from {
+        opacity: 0.5;
+      }
+      to {
+        opacity: 1;
+      }
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  .album {
+    grid-template-columns: 10% 7px 20% 40%;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+
+  .album {
+    grid-template-columns: 10% 7px 20% 30%;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
