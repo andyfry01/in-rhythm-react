@@ -31,7 +31,6 @@ class SearchArea extends Component {
     this.props.updateUserSearchboxInput(searchTerm)
   }
 
-  // hook up to redux!
   clearSearchTerm() {
     this.props.clearUserInput()
   }
@@ -58,7 +57,7 @@ class SearchArea extends Component {
           onChange={e => this.handleInput(e)}
           onKeyDown={this.handleKeys}
         />
-        <AutoCompleter  menuItems={this.state.popularArtists} />
+        <AutoCompleter menuItems={this.state.popularArtists} />
         <button
           className="searchArea__clearInput"
           onClick={this.clearSearchTerm}

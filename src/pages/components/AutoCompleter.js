@@ -59,8 +59,6 @@ class AutoCompleter extends Component {
   }
 
   render() {
-    console.log('this.props~~');
-    console.log(this.props);
     const autoCompleteSuggestions = this.state.suggestions.map((artistName, index) => {
       return (<AutoCompleteItem key={index} 
                                 index={index}
