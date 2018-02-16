@@ -27,6 +27,7 @@ export function fetchAlbums(searchTerm) {
 function requestAlbums(searchTerm) {
   return {
     type: 'REQUEST_ALBUMS',
+    albumList: [],
     searchTerm: searchTerm
   }
 }
@@ -47,7 +48,8 @@ function receiveAlbumList(albumList) {
       albumName: album.collectionName, 
       // get just the release year
       releaseYear: parseInt(album.releaseDate.slice(0, 4)),
-      albumImg: album.artworkUrl100
+      // trick itunes into giving us a bigger image
+      albumImg: album.artworkUrl100.replace('100x100bb', '500x500bb')
     }
   }).sort((a, b) => a.releaseYear - b.releaseYear)
   return {

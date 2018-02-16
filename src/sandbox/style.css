@@ -4,7 +4,7 @@
 
 .album {
   display: grid;
-  grid-template-columns: 10% 2.5% 10% auto;
+  grid-template-columns: 10% 0.5% 10% auto;
   grid-template-rows: 20% 10% 2.5% auto;
   grid-template-areas:"leftGutter verticalBar topGutter     topGutter"
                       "leftGutter verticalBar albumYear     albumMain"
