@@ -1,19 +1,20 @@
 /* Vars */
 :root {
   --menuBorderColor: rgb(238, 238, 238);
-  --albumHeightSmall: 25rem;
-  --albumHeightMed: 30rem;
-  --albumHeightLarge: 40rem;
-  --boxShadow: 3px 5px 10px black;
-}
-
-/* Util classes */
-.hidden {
-  opacity: 0;
+  --albumHeight: 25rem;
+  --boxShadow: 3px 5px 10px var(--black);
+  --white: rgb(253, 253, 253);
+  --brightWhite: rgb(255, 255, 255);
+  --black: rgb(3, 3, 3);
+  --red: rgb(254, 87, 87);
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+  body {
+    background: var(--white);
+  }
+
   /* Header */
   .header {
     height: 40vh;
@@ -76,9 +77,9 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    border: 5px solid white;
+    border: 5px solid var(--white);
     background: rgba(0,0,0, 0.7);
-    color: white;
+    color: var(--white);
     padding: 1rem;
     box-shadow: var(--boxShadow);
   }
@@ -96,24 +97,26 @@
     height: 30vh;
     width: 100%;
     display: grid;
-    grid-template-areas:  "top  top top top"
-                          "left searchbar cancel right"
+    grid-template-areas:  "left searchbar cancel right"
                           "left autocomplete bottom right";
-    grid-template-rows: 40% auto auto;
+    grid-template-rows: 4rem 1fr;
     grid-template-columns: 1fr 60% 10% 1fr;
     grid-column-gap: 10px;
+    padding-top: 5rem;
     font-family: 'Muli', sans-serif;
+    z-index: 40;
   }
 
   .searchArea__input {
     font-size: 1.25rem;
     grid-area: searchbar;
     padding-left: 1rem;
+    background: var(--brightWhite);
   }
 
   .searchArea__clearInput { 
     grid-area: cancel;
-    background: rgb(254, 87, 87);
+    background: var(--red);
   }
 
   .searchArea__clearInputIcon {
@@ -131,6 +134,8 @@
     grid-template-rows: auto;
     grid-row-gap: 10px;
     padding-top: 20px;
+    background: var(--white);
+    z-index: 30;
   }
   .searchArea__autoCompleteItem {
     font-size: 1.25rem;
@@ -140,6 +145,14 @@
   }
 
   /* Album Timeline */
+
+  .errorMessage {
+    margin-top: 2rem;
+    font-family: 'Muli', sans-serif;
+    color: var(--red);
+    font-size: 2rem;
+    text-align: center;
+  }
 
   .albumTimeline {
     font-family: 'Muli', sans-serif;
@@ -162,13 +175,13 @@
 
   .alubmTimeline__timelineBar {
     grid-area: verticalBar;
-    background: black;
+    background: var(--black);
   }
 
   .album__horizontalBar {
     grid-area: horizontalBar;
-    background: black;
-    color: white;
+    background: var(--black);
+    color: var(--white);
     height: 100%;
     width: 100%;
   }
@@ -189,10 +202,11 @@
                           "albumImg";
     grid-row-gap: 20px;
     animation: 0.9s ease fade-in;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     border-radius: 2px;
     padding: 20px;
     box-shadow: var(--boxShadow);
+    background: var(--brightWhite);
   }
 
   .album__title {
@@ -207,12 +221,10 @@
 
   .album__image img {
     max-width: 100%;
-    /*min-height: 100%;*/
-    max-height: var(--albumHeightSmall);
+    max-height: var(--albumHeight);
     display: block;
     margin: 0 auto;
-    /*height: var(--albumHeight);*/
-    border: 1px solid black;
+    border: 1px solid var(--black);
     border-radius: 2px;
   }
 
@@ -251,4 +263,10 @@
   .header__image img {
     margin-top: -12rem;
   }
+}
+
+
+/* Util classes */
+.hidden {
+  display: none;
 }
