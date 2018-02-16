@@ -117,6 +117,24 @@
     width: 2rem;
   }
   
+  .searchArea__autoCompleteMenu {
+    grid-area: autocomplete;
+    border-right: 1px solid var(--menuBorderColor);
+    border-bottom: 1px solid var(--menuBorderColor);
+    border-left: 1px solid var(--menuBorderColor);
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-row-gap: 10px;
+    padding-top: 20px;
+  }
+  .searchArea__autoCompleteItem {
+    font-size: 1.25rem;
+    height: 2rem;
+    padding: 5px 5px 5px 1rem;
+
+  }
+
   /* Album Timeline */
 
   /* Album */
