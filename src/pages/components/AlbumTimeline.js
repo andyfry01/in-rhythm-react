@@ -4,15 +4,34 @@ import React, { Component } from "react";
 // Components
 import Album from "./Album";
 
-class AlbumTimeline extends Component {
-  render() {
+// Redux
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+
+const AlbumTimeline = (props) => {
+
+  if (props.albumList.length > 0) {
+    let albums = props.albumList.map(albumInfo => <Album artistInfo={albumInfo} />)
     return (
       <div>
-        <h1>Hello from AlbumTimeline</h1>
-        <Album />
+        {albums}
+      </div>
+    )
+  } else {
+    return (
+      <div>
       </div>
     );
+
   }
 }
 
-export default AlbumTimeline;
+
+const mapStateToProps = state => {
+  return state
+}
+
+export default connect(
+  mapStateToProps,
+)(AlbumTimeline)
