@@ -46,7 +46,8 @@ function receiveAlbumList(albumList) {
     return {
       albumName: album.collectionName, 
       // get just the release year
-      releaseYear: parseInt(album.releaseDate.slice(0, 4))
+      releaseYear: parseInt(album.releaseDate.slice(0, 4)),
+      albumImg: album.artworkUrl100
     }
   }).sort((a, b) => a.releaseYear - b.releaseYear)
   return {

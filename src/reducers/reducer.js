@@ -1,6 +1,8 @@
 const initialState = {
   userSearchboxInput: '',
-  dropdownMenuSelection: ''
+  dropdownMenuSelection: '',
+  albumList: [],
+  querying: false
 }
 
 
@@ -19,12 +21,12 @@ const reducer = (state = initialState, action) => {
     case 'RECEIVE_ALBUMS':
       return Object.assign({}, state, {
         albumList: action.albumList,
-        artistBeingSearched: ''
+        querying: false
       })
 
     case 'REQUEST_ALBUMS':
       return Object.assign({}, state, {
-        artistBeingSearched: action.searchTerm
+        querying: true
       })
 
     case 'REQUEST_FAILED':
