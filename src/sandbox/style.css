@@ -1,0 +1,72 @@
+:root {
+  --albumHeight: 20rem;
+}
+
+.album {
+  display: grid;
+  grid-template-columns: 10% 2.5% 10% auto;
+  grid-template-rows: 20% 10% 2.5% auto;
+  grid-template-areas:"leftGutter verticalBar topGutter     topGutter"
+                      "leftGutter verticalBar albumYear     albumMain"
+                      "leftGutter verticalBar horizontalBar albumMain"
+                      "leftGutter verticalBar bottomGutter  albumMain";
+  height: calc(var(--albumHeight) + 5rem);
+  width: 100%;
+}
+
+
+.alubmTimeline__timelineBar {
+  grid-area: verticalBar;
+  background: black;
+}
+
+.album__horizontalBar {
+  grid-area: horizontalBar;
+  background: black;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.album__year {
+  grid-area: albumYear;
+}
+
+.album__main {
+  grid-area: albumMain;
+  display: grid;
+  z-index: 10;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25% 1fr;
+  grid-template-areas:  "albumTitle"
+                        "albumImg";
+  animation: 0.9s ease slide-left;
+  transform: translate3d(0, 0, 0);
+}
+
+.album__title {
+  grid-area: albumTitle;
+}
+
+.album__image {
+  grid-area: albumImg;
+}
+
+.album__image img {
+  max-width: 100%;
+  height: var(--albumHeight);
+}
+
+@keyframes slide-left {
+    from {
+      -webkit-transform: translateX(-8%);
+      /* transform: translateX(-200%);
+      margin-left: -10px;
+      margin-bottom: -10px; */
+    }
+    to {
+      transform: translateX(0);
+      /* margin-left: 0;
+      margin-bottom: 0; */
+    }
+}
