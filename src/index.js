@@ -11,10 +11,10 @@ import thunkMiddleware from 'redux-thunk'
 import reducer from './reducers/reducer'
 
 import registerServiceWorker from './registerServiceWorker';
-const loggerMiddleware = createLogger()
+// const loggerMiddleware = createLogger()
 
 
-let store = createStore(reducer, applyMiddleware(thunkMiddleware, loggerMiddleware))
+let store = createStore(reducer, applyMiddleware(thunkMiddleware))
 
 ReactDOM.render(
   <Provider store={store}> 
