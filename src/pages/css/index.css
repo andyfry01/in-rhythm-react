@@ -1,7 +1,7 @@
 /* Vars */
 :root {
   --menuBorderColor: rgb(238, 238, 238);
-  --albumHeight: 25rem;
+  --albumHeight: 30rem;
   --boxShadow: 3px 5px 10px var(--black);
   --white: rgb(253, 253, 253);
   --brightWhite: rgb(255, 255, 255);
@@ -193,7 +193,7 @@
     display: grid;
     z-index: 10;
     grid-template-columns: 1fr;
-    grid-template-rows: 20% 1fr;
+    grid-template-rows: auto;
     grid-template-areas:  "albumTitle"
                           "albumImg";
     grid-row-gap: 20px;
