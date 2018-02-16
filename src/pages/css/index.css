@@ -1,3 +1,13 @@
+/* Vars */
+:root {
+  --menuBorderColor: rgb(238, 238, 238);
+}
+
+/* Util classes */
+.hidden {
+  opacity: 0;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   /* Header */
@@ -15,12 +25,14 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 80% 1fr;
+    grid-template-areas:  "bgImage"
+                          "gradient";
     z-index: 10;
-    overflow: hidden;
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
+    overflow: hidden;
   }
 
   .header__upperLayer {
@@ -29,6 +41,8 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 50% 1fr;
+    grid-template-areas:  "spacer"
+                          "logo";
     z-index: 20;
     grid-column-start: 1;
     grid-column-end: 2;
@@ -38,10 +52,7 @@
 
   .header__image {
     width: 100%;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-area: bgImage;
   }
 
   .header__image img {
@@ -51,18 +62,12 @@
   }
 
   .header__gradient {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-area: gradient;
     background: linear-gradient(rgb(50,50,50), rgb(255,255,255));
   }
 
   .header__textBox {
-    grid-column-start: 1;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-end: 2;
+    grid-area: logo;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,32 +85,30 @@
     font-family: 'Jura', sans-serif;
   }
 
+
   /* Search Area */
 
   .searchArea {
     height: 30vh;
     width: 100%;
     display: grid;
-    grid-template-rows: 40% auto 40%;
+    grid-template-areas:  "top  top top top"
+                          "left searchbar cancel right"
+                          "left autocomplete bottom right";
+    grid-template-rows: 40% auto auto;
     grid-template-columns: 1fr 60% 10% 1fr;
     grid-column-gap: 10px;
+    font-family: 'Muli', sans-serif;
   }
 
   .searchArea__input {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
     font-size: 1.25rem;
-    font-family: 'Muli', sans-serif;
+    grid-area: searchbar;
     padding-left: 1rem;
   }
 
   .searchArea__clearInput { 
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-area: cancel;
     background: rgb(254, 87, 87);
   }
 
